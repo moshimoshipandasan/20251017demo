@@ -65,9 +65,15 @@
               <span class="btn__icon">🎬</span>
               <span>上映劇場を探す</span>
             </a>
-            <button class="btn btn--secondary" type="button" data-audio-toggle>
-              <span class="btn__icon">🎵</span>
-              <span>主題曲を再生</span>
+            <button
+              class="btn btn--secondary"
+              type="button"
+              data-audio-toggle
+              data-play-label="主題曲を再生"
+              data-pause-label="主題曲を停止"
+            >
+              <span class="btn__icon" aria-hidden="true">&#9835;</span>
+              <span class="btn__label" data-audio-label>主題曲を再生</span>
             </button>
           </div>
           <div class="hero__scroll-indicator">
@@ -258,3 +264,4 @@
     <script src="scripts/main.js"></script>
   </body>
 </html>
+

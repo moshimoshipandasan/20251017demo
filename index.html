@@ -15,6 +15,7 @@
     />
     <meta property="og:type" content="website" />
     <link rel="preload" as="image" href="image.png" />
+    <link rel="preload" as="video" href="movie.mp4" />
     <link rel="preload" as="audio" href="sound.mp3" />
     <link
       rel="stylesheet"
@@ -25,6 +26,10 @@
   <body>
     <div class="layout">
       <header class="hero">
+        <video class="hero__video" autoplay loop muted playsinline>
+          <source src="movie.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__overlay" role="presentation"></div>
         <nav class="top-nav" aria-label="Main navigation">
           <a class="logo" href="#top">放課後、君になる時刻</a>
           <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
@@ -41,19 +46,33 @@
             <a href="#tickets">TICKETS</a>
           </div>
         </nav>
-        <div class="hero__backdrop" role="presentation"></div>
         <div class="hero__content" id="top">
-          <p class="hero__tagline">冬 2026 全国ロードショー</p>
-          <h1 class="hero__title">放課後、君になる時刻</h1>
+          <p class="hero__tagline">
+            <span class="tagline__badge">劇場公開決定</span>
+            <span class="tagline__date">2026年冬 全国ロードショー</span>
+          </p>
+          <h1 class="hero__title">
+            <span class="title__line">放課後、</span>
+            <span class="title__line">君になる時刻</span>
+          </h1>
           <p class="hero__subtitle">Afterglow Resonance</p>
           <p class="hero__logline">
-            止まった校舎の時計が告げたのは、過去も未来も一度にゆらぐ放課後。選ぶ言葉が、もう一度「君」をつくりだす。
+            止まった校舎の時計が告げたのは、過去も未来も一度にゆらぐ放課後。<br/>
+            選ぶ言葉が、もう一度「君」をつくりだす。
           </p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#tickets">上映劇場一覧</a>
-            <button class="btn btn--ghost" type="button" data-audio-toggle>
-              主題曲を再生
+            <a class="btn btn--primary btn--pulse" href="#tickets">
+              <span class="btn__icon">🎬</span>
+              <span>上映劇場を探す</span>
+            </a>
+            <button class="btn btn--secondary" type="button" data-audio-toggle>
+              <span class="btn__icon">🎵</span>
+              <span>主題曲を再生</span>
             </button>
+          </div>
+          <div class="hero__scroll-indicator">
+            <span class="scroll-text">Scroll</span>
+            <span class="scroll-arrow">↓</span>
           </div>
         </div>
       </header>
@@ -172,19 +191,44 @@
 
         <section class="section section--tickets" id="tickets">
           <div class="tickets__card">
-            <h2>劇場情報 &amp; チケット</h2>
-            <p>
-              公式アプリ「After School Clock」でムビチケ前売券を販売中。上映劇場や入場者特典の最新情報はアプリ内で随時更新します。
+            <div class="tickets__badge">🎫 劇場公開情報</div>
+            <h2>今すぐチケットを予約</h2>
+            <p class="tickets__lead">
+              全国52館で絶賛上映中。公式アプリ「After School Clock」でムビチケ前売券を販売中。上映劇場や入場者特典の最新情報はアプリ内で随時更新します。
             </p>
             <div class="ticket__cta">
-              <a class="btn btn--primary" href="#">アプリで前売券を購入</a>
-              <a class="btn btn--ghost" href="#">上映劇場リスト（PDF）</a>
+              <a class="btn btn--primary btn--large" href="#">
+                <span class="btn__icon">🎬</span>
+                <span>アプリで前売券を購入</span>
+              </a>
+              <a class="btn btn--secondary" href="#">
+                <span class="btn__icon">📍</span>
+                <span>上映劇場を探す</span>
+              </a>
             </div>
-            <ul class="ticket__notes">
-              <li>全国共通前売券：1,500円（税込）</li>
-              <li>特典：ホログラムポストカード＋シーン解説音声QR</li>
-              <li>バリアフリー上映対応：UDCast字幕・音声ガイド</li>
-            </ul>
+            <div class="ticket__benefits">
+              <div class="benefit__item">
+                <span class="benefit__icon">💳</span>
+                <div>
+                  <strong>全国共通前売券</strong>
+                  <p>1,500円（税込）</p>
+                </div>
+              </div>
+              <div class="benefit__item">
+                <span class="benefit__icon">🎁</span>
+                <div>
+                  <strong>入場者特典</strong>
+                  <p>ホログラムポストカード＋音声QR</p>
+                </div>
+              </div>
+              <div class="benefit__item">
+                <span class="benefit__icon">♿</span>
+                <div>
+                  <strong>バリアフリー対応</strong>
+                  <p>UDCast字幕・音声ガイド完備</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>

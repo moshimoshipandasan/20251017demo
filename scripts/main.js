@@ -1,4 +1,8 @@
 const audioToggleButton = document.querySelector("[data-audio-toggle]");
+const audioToggleLabel = audioToggleButton?.querySelector("[data-audio-label]");
+const playLabel =
+  audioToggleButton?.dataset.playLabel ?? audioToggleLabel?.textContent ?? "主題曲を再生";
+const pauseLabel = audioToggleButton?.dataset.pauseLabel ?? "主題曲を停止";
 const navToggleButton = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const bgAudio = document.getElementById("bg-audio");
@@ -13,12 +17,20 @@ const toggleAudio = async () => {
     if (!isAudioPlaying) {
       await bgAudio.play();
       audioToggleButton.classList.add("is-active");
-      audioToggleButton.textContent = "主題曲を停止";
+      if (audioToggleLabel) {
+        audioToggleLabel.textContent = pauseLabel;
+      } else {
+        audioToggleButton.textContent = pauseLabel;
+      }
       isAudioPlaying = true;
     } else {
       bgAudio.pause();
       audioToggleButton.classList.remove("is-active");
-      audioToggleButton.textContent = "主題曲を再生";
+      if (audioToggleLabel) {
+        audioToggleLabel.textContent = playLabel;
+      } else {
+        audioToggleButton.textContent = playLabel;
+      }
       isAudioPlaying = false;
     }
   } catch (error) {
@@ -34,7 +46,11 @@ if (bgAudio) {
   bgAudio.addEventListener("ended", () => {
     isAudioPlaying = false;
     audioToggleButton?.classList.remove("is-active");
-    audioToggleButton && (audioToggleButton.textContent = "主題曲を再生");
+    if (audioToggleLabel) {
+      audioToggleLabel.textContent = playLabel;
+    } else if (audioToggleButton) {
+      audioToggleButton.textContent = playLabel;
+    }
   });
 }
 
